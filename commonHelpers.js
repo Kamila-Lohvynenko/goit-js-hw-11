@@ -1,26 +1,26 @@
-import{i as a,S as f}from"./assets/vendor-5b791d57.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const s of e)if(s.type==="childList")for(const n of s.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&i(n)}).observe(document,{childList:!0,subtree:!0});function o(e){const s={};return e.integrity&&(s.integrity=e.integrity),e.referrerPolicy&&(s.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?s.credentials="include":e.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function i(e){if(e.ep)return;e.ep=!0;const s=o(e);fetch(e.href,s)}})();const c=document.querySelector(".form"),l=c.elements.input,u=document.querySelector(".container"),d=document.querySelector(".message");c.addEventListener("submit",m);function m(r){if(r.preventDefault(),u.innerHTML="",!l.value.trim()){a.show({message:"Your query does not contain any letters!",messageColor:"#fff",backgroundColor:"#ef4040",position:"topRight"});return}d.classList.remove("is-hidden"),h().then(t=>p(t.hits)).catch(t=>console.log(t))}function h(){const r=new URLSearchParams({key:"43199917-ac2cc136e7963c28457226ad3",q:`${l.value.trim()}`,image_type:"photo",orientation:"horizontal",safesearch:!0});return fetch(`https://pixabay.com/api/?${r}`).then(t=>{if(!t.ok)throw new Error(t.status);return t.json()})}function p(r){d.classList.add("is-hidden"),r.length||a.show({message:"Sorry, there are no images matching your search query. Please try again!",messageColor:"#fff",backgroundColor:"#ef4040",position:"topRight"});const t=r.map(o=>`
+import{i as d,S as f}from"./assets/vendor-5b791d57.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const n of r.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&i(n)}).observe(document,{childList:!0,subtree:!0});function t(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function i(e){if(e.ep)return;e.ep=!0;const r=t(e);fetch(e.href,r)}})();function m(s,o){const t=new URLSearchParams({key:s,q:o.value.trim(),image_type:"photo",orientation:"horizontal",safesearch:!0});return fetch(`https://pixabay.com/api/?${t}`).then(i=>{if(!i.ok)throw new Error(i.status);return i.json()})}function h(s){return s.length||iziToast.error({message:"Sorry, there are no images matching your search query. Please try again!",messageColor:"#fff",backgroundColor:"#ef4040",position:"topRight"}),s.map(t=>`
             <li class="item">
-            <a href="${o.largeImageURL}">
-            <img src="${o.webformatURL}" alt="${o.tags}">
+            <a href="${t.largeImageURL}">
+            <img src="${t.webformatURL}" alt="${t.tags}">
             </a>
             <div class="item-content">
             <div>
             <h3 class="title">Likes</h3>
-            <p class="amount">${o.likes}</p>
+            <p class="amount">${t.likes}</p>
             </div>
             <div>
             <h3 class="title">Views</h3>
-            <p class="amount">${o.views}</p>
+            <p class="amount">${t.views}</p>
             </div>
             <div>
             <h3 class="title">Comments</h3>
-            <p class="amount">${o.comments}</p>
+            <p class="amount">${t.comments}</p>
             </div>
             <div>
             <h3 class="title">Downloads</h3>
-            <p class="amount">${o.downloads}</p>
+            <p class="amount">${t.downloads}</p>
             </div>
             </div>
             </li>
-            `).join("");u.insertAdjacentHTML("beforeend",t),g.refresh()}const g=new f(".container a",{captionsData:"alt",captionDelay:250});
+            `).join("")}const u=document.querySelector(".form"),a=u.elements.input,c=document.querySelector(".container"),l=document.querySelector(".loader"),p="43199917-ac2cc136e7963c28457226ad3";u.addEventListener("submit",g);function g(s){if(s.preventDefault(),c.innerHTML="",!a.value.trim()){d.error({message:"Your query does not contain any letters!",messageColor:"#fff",backgroundColor:"#ef4040",position:"topRight"});return}l.classList.remove("is-hidden"),m(p,a).then(o=>{l.classList.add("is-hidden"),c.insertAdjacentHTML("beforeend",h(o.hits)),y.refresh()}).catch(o=>alert(o))}const y=new f(".container a",{captionsData:"alt",captionDelay:250});
 //# sourceMappingURL=commonHelpers.js.map
