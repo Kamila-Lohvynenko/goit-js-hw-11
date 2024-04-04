@@ -1,3 +1,6 @@
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
 function fetchImages(key, inputForSearch) {
   const searchParams = new URLSearchParams({
     key,
@@ -9,7 +12,11 @@ function fetchImages(key, inputForSearch) {
 
   return fetch(`https://pixabay.com/api/?${searchParams}`).then(response => {
     if (!response.ok) {
-      throw new Error(response.status);
+      iziToast.error({
+        message: `Error number ${response.status}!`,
+        position: 'topRight',
+      });
+      throw new Error();
     }
     return response.json();
   });

@@ -1,10 +1,11 @@
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
 function renderImages(images) {
   if (!images.length) {
     iziToast.error({
       message:
         'Sorry, there are no images matching your search query. Please try again!',
-      messageColor: '#fff',
-      backgroundColor: '#ef4040',
       position: 'topRight',
     });
   }

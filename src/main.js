@@ -22,8 +22,6 @@ function searchImages(event) {
   if (!searchInput.value.trim()) {
     iziToast.error({
       message: 'Your query does not contain any letters!',
-      messageColor: '#fff',
-      backgroundColor: '#ef4040',
       position: 'topRight',
     });
     return;
@@ -32,10 +30,17 @@ function searchImages(event) {
   fetchImages(apiKey, searchInput)
     .then(images => {
       loadingMessage.classList.add('is-hidden');
+      if (!images.hits) {
+        iziToast.error({
+          message: 'There is a problem, data is missing on the server',
+          position: 'topRight',
+        });
+        throw new Error();
+      }
       imagesList.insertAdjacentHTML('beforeend', renderImages(images.hits));
       lightbox.refresh();
     })
-    .catch(error => alert(error));
+    .catch(() => loadingMessage.classList.add('is-hidden'));
 }
 
 const lightbox = new SimpleLightbox('.container a', {
